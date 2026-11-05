@@ -1,0 +1,24 @@
+appId: com.sundar.expense-tracker
+productName: Expense Tracker
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**
+  - package.json
+  - '!**/*.map'
+asarUnpack:
+  - node_modules/better-sqlite3/**
+  - node_modules/pdfjs-dist/**
+npmRebuild: true
+mac:
+  category: public.app-category.finance
+  target:
+    - target: dir
+      arch: arm64
+  # Unsigned personal build: first launch needs right-click → Open (or `xattr -dr com.apple.quarantine`).
+  identity: null
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  extendInfo:
+    NSUserNotificationAlertStyle: alert
